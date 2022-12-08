@@ -1,4 +1,4 @@
-package com.example.legomanagerbe.model;
+package com.example.legomanagerbe.model.Decentralization;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,8 +15,7 @@ import javax.persistence.Id;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Category {
-
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
