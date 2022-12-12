@@ -6,36 +6,32 @@
       </div>
       <div class="col-md-8">
 
-        <div class="card rounded-3 mb-2">
+        <div class="card rounded-3 mb-2" *ngFor="let item of carts; index as i">
           <div class="card-body p-4">
             <div class="row d-flex justify-content-between align-items-center">
               <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                 <input class="form-check-inline" type="checkbox" value="" id="flexCheckDefault" />
               </div>
               <div class="col-md-2 col-lg-2 col-xl-2">
-<!--                <img [src]="item.imageUrl" alt="Cotton T-shirt" style="height: 100px; width: 100px">-->
-                <img src="https://www.lego.com/cdn/cs/set/assets/bltb2ef891e7096f860/71774_Prod.png?fit=bounds&format=webply&quality=80&width=320&height=320&dpr=1.5"
-                     alt="Cotton T-shirt" style="height: 100px; width: 100px">
+                <img [src]="item.imageBox" alt="Cotton T-shirt" style="height: 100%; width: 100%">
               </div>
               <div class="col-md-3 col-lg-3 col-xl-3">
-<!--                <p class="lead fw-normal mb-2">{{item.title}}</p>-->
-                <p class="lead fw-normal mb-2">Lloyd’s Golden Dragon</p>
+                <p class="lead fw-normal mb-2">{{item.name}}</p>
               </div>
               <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                <button class="btn btn-link px-2">
+                <button class="btn btn-link px-2" (click)="decrease(i, item.quantity)">
                   <i class="fas fa-minus"></i>
                 </button>
 
-                <input style="width: 60px; margin-top: 5px" id="form1" min="0" name="quantity" type="number"
+                <input style="width: 60px" id="form1" min="0" name="quantity" [value]="item.quantity" type="number"
                        class="form-control form-control-sm"/>
 
-                <button class="btn btn-link px-2">
+                <button class="btn btn-link px-2" (click)="increase(i, item.quantity)">
                   <i class="fas fa-plus"></i>
                 </button>
               </div>
               <div class="col-md-2 col-lg-2 col-xl-2 offset-lg-1">
-<!--                <h5 class="mb-0">{{item.price}}</h5>-->
-                <h5 class="mb-0">4.600.000</h5>
+                <h5 class="mb-0">{{item.price}}đ</h5>
               </div>
               <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                 <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
@@ -44,101 +40,139 @@
           </div>
         </div>
 
-        <div class="card rounded-3 mb-2">
-          <div class="card-body p-4">
-            <div class="row d-flex justify-content-between align-items-center">
-              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                <input class="form-check-inline" type="checkbox" value="" id="flexCheckDefault1" />
-              </div>
-              <div class="col-md-2 col-lg-2 col-xl-2">
-                <!--                <img [src]="item.imageUrl" alt="Cotton T-shirt" style="height: 100px; width: 100px">-->
-                <img src="https://www.lego.com/cdn/cs/set/assets/blt664c2d4705cfc844/71775.png?fit=bounds&format=webply&quality=80&width=320&height=320&dpr=1.5"
-                     alt="Cotton T-shirt" style="height: 100px; width: 100px">
-              </div>
-              <div class="col-md-3 col-lg-3 col-xl-3">
-                <!--                <p class="lead fw-normal mb-2">{{item.title}}</p>-->
-                <p class="lead fw-normal mb-2">Nya's Samurai X MECH</p>
-              </div>
-              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                <button class="btn btn-link px-2">
-                  <i class="fas fa-minus"></i>
-                </button>
+<!--        <div class="card rounded-3 mb-2">-->
+<!--          <div class="card-body p-4">-->
+<!--            <div class="row d-flex justify-content-between align-items-center">-->
+<!--              <div class="col-md-1 col-lg-1 col-xl-1 text-end">-->
+<!--                <input class="form-check-inline" type="checkbox" value="" id="flexCheckDefault4" />-->
+<!--              </div>-->
+<!--              <div class="col-md-2 col-lg-2 col-xl-2">-->
+<!--&lt;!&ndash;                <img [src]="item.imageUrl" alt="Cotton T-shirt" style="height: 100px; width: 100px">&ndash;&gt;-->
+<!--                <img src="https://www.lego.com/cdn/cs/set/assets/bltb2ef891e7096f860/71774_Prod.png?fit=bounds&format=webply&quality=80&width=320&height=320&dpr=1.5"-->
+<!--                     alt="Cotton T-shirt" style="height: 100px; width: 100px">-->
+<!--              </div>-->
+<!--              <div class="col-md-3 col-lg-3 col-xl-3">-->
+<!--&lt;!&ndash;                <p class="lead fw-normal mb-2">{{item.title}}</p>&ndash;&gt;-->
+<!--                <p class="lead fw-normal mb-2">Lloyd’s Golden Dragon</p>-->
+<!--              </div>-->
+<!--              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">-->
+<!--                <button class="btn btn-link px-2">-->
+<!--                  <i class="fas fa-minus"></i>-->
+<!--                </button>-->
 
-                <input style="width: 60px; margin-top: 5px" id="form2" min="0" name="quantity" type="number"
-                       class="form-control form-control-sm"/>
+<!--                <input style="width: 60px; margin-top: 5px" id="form4" min="0" name="quantity" type="number"-->
+<!--                       class="form-control form-control-sm"/>-->
 
-                <button class="btn btn-link px-2">
-                  <i class="fas fa-plus"></i>
-                </button>
-                <!--                <button class="btn btn-link px-2" (click)="decrease(i, item.quantity)">-->
-                <!--                  <i class="fas fa-minus"></i>-->
-                <!--                </button>-->
+<!--                <button class="btn btn-link px-2">-->
+<!--                  <i class="fas fa-plus"></i>-->
+<!--                </button>-->
+<!--              </div>-->
+<!--              <div class="col-md-2 col-lg-2 col-xl-2 offset-lg-1">-->
+<!--&lt;!&ndash;                <h5 class="mb-0">{{item.price}}</h5>&ndash;&gt;-->
+<!--                <h5 class="mb-0">4.600.000</h5>-->
+<!--              </div>-->
+<!--              <div class="col-md-1 col-lg-1 col-xl-1 text-end">-->
+<!--                <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
 
-                <!--                <input style="width: 60px" id="form1" min="0" name="quantity" [value]="item.quantity" type="number"-->
-                <!--                       class="form-control form-control-sm"/>-->
+<!--        <div class="card rounded-3 mb-2">-->
+<!--          <div class="card-body p-4">-->
+<!--            <div class="row d-flex justify-content-between align-items-center">-->
+<!--              <div class="col-md-1 col-lg-1 col-xl-1 text-end">-->
+<!--                <input class="form-check-inline" type="checkbox" value="" id="flexCheckDefault1" />-->
+<!--              </div>-->
+<!--              <div class="col-md-2 col-lg-2 col-xl-2">-->
+<!--                &lt;!&ndash;                <img [src]="item.imageUrl" alt="Cotton T-shirt" style="height: 100px; width: 100px">&ndash;&gt;-->
+<!--                <img src="https://www.lego.com/cdn/cs/set/assets/blt664c2d4705cfc844/71775.png?fit=bounds&format=webply&quality=80&width=320&height=320&dpr=1.5"-->
+<!--                     alt="Cotton T-shirt" style="height: 100px; width: 100px">-->
+<!--              </div>-->
+<!--              <div class="col-md-3 col-lg-3 col-xl-3">-->
+<!--                &lt;!&ndash;                <p class="lead fw-normal mb-2">{{item.title}}</p>&ndash;&gt;-->
+<!--                <p class="lead fw-normal mb-2">Nya's Samurai X MECH</p>-->
+<!--              </div>-->
+<!--              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">-->
+<!--                <button class="btn btn-link px-2">-->
+<!--                  <i class="fas fa-minus"></i>-->
+<!--                </button>-->
 
-                <!--                <button class="btn btn-link px-2" (click)="increase(i, item.quantity)">-->
-                <!--                  <i class="fas fa-plus"></i>-->
-                <!--                </button>-->
-              </div>
-              <div class="col-md-2 col-lg-2 col-xl-2 offset-lg-1">
-                <!--                <h5 class="mb-0">{{item.price}}</h5>-->
-                <h5 class="mb-0">3.400.000</h5>
-              </div>
-              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
+<!--                <input style="width: 60px; margin-top: 5px" id="form2" min="0" name="quantity" type="number"-->
+<!--                       class="form-control form-control-sm"/>-->
 
-        <div class="card rounded-3 mb-2">
-          <div class="card-body p-4">
-            <div class="row d-flex justify-content-between align-items-center">
-              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                <input class="form-check-inline" type="checkbox" value="" id="flexCheckDefault2" />
-              </div>
-              <div class="col-md-2 col-lg-2 col-xl-2">
-                <!--                <img [src]="item.imageUrl" alt="Cotton T-shirt" style="height: 100px; width: 100px">-->
-                <img src="https://www.lego.com/cdn/cs/set/assets/blta775065c182b21fa/71773.png?fit=bounds&format=webply&quality=80&width=320&height=320&dpr=1.5"
-                     alt="Cotton T-shirt" style="height: 100px; width: 100px">
-              </div>
-              <div class="col-md-3 col-lg-3 col-xl-3">
-                <!--                <p class="lead fw-normal mb-2">{{item.title}}</p>-->
-                <p class="lead fw-normal mb-2">Kai’s Golden Dragon</p>
-              </div>
-              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                <button class="btn btn-link px-2">
-                  <i class="fas fa-minus"></i>
-                </button>
+<!--                <button class="btn btn-link px-2">-->
+<!--                  <i class="fas fa-plus"></i>-->
+<!--                </button>-->
+<!--                &lt;!&ndash;                <button class="btn btn-link px-2" (click)="decrease(i, item.quantity)">&ndash;&gt;-->
+<!--                &lt;!&ndash;                  <i class="fas fa-minus"></i>&ndash;&gt;-->
+<!--                &lt;!&ndash;                </button>&ndash;&gt;-->
 
-                <input style="width: 60px; margin-top: 5px" id="form3" min="0" name="quantity" type="number"
-                       class="form-control form-control-sm"/>
+<!--                &lt;!&ndash;                <input style="width: 60px" id="form1" min="0" name="quantity" [value]="item.quantity" type="number"&ndash;&gt;-->
+<!--                &lt;!&ndash;                       class="form-control form-control-sm"/>&ndash;&gt;-->
 
-                <button class="btn btn-link px-2">
-                  <i class="fas fa-plus"></i>
-                </button>
-                <!--                <button class="btn btn-link px-2" (click)="decrease(i, item.quantity)">-->
-                <!--                  <i class="fas fa-minus"></i>-->
-                <!--                </button>-->
+<!--                &lt;!&ndash;                <button class="btn btn-link px-2" (click)="increase(i, item.quantity)">&ndash;&gt;-->
+<!--                &lt;!&ndash;                  <i class="fas fa-plus"></i>&ndash;&gt;-->
+<!--                &lt;!&ndash;                </button>&ndash;&gt;-->
+<!--              </div>-->
+<!--              <div class="col-md-2 col-lg-2 col-xl-2 offset-lg-1">-->
+<!--                &lt;!&ndash;                <h5 class="mb-0">{{item.price}}</h5>&ndash;&gt;-->
+<!--                <h5 class="mb-0">3.400.000</h5>-->
+<!--              </div>-->
+<!--              <div class="col-md-1 col-lg-1 col-xl-1 text-end">-->
+<!--                <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
 
-                <!--                <input style="width: 60px" id="form1" min="0" name="quantity" [value]="item.quantity" type="number"-->
-                <!--                       class="form-control form-control-sm"/>-->
+<!--        <div class="card rounded-3 mb-2">-->
+<!--          <div class="card-body p-4">-->
+<!--            <div class="row d-flex justify-content-between align-items-center">-->
+<!--              <div class="col-md-1 col-lg-1 col-xl-1 text-end">-->
+<!--                <input class="form-check-inline" type="checkbox" value="" id="flexCheckDefault2" />-->
+<!--              </div>-->
+<!--              <div class="col-md-2 col-lg-2 col-xl-2">-->
+<!--                &lt;!&ndash;                <img [src]="item.imageUrl" alt="Cotton T-shirt" style="height: 100px; width: 100px">&ndash;&gt;-->
+<!--                <img src="https://www.lego.com/cdn/cs/set/assets/blta775065c182b21fa/71773.png?fit=bounds&format=webply&quality=80&width=320&height=320&dpr=1.5"-->
+<!--                     alt="Cotton T-shirt" style="height: 100px; width: 100px">-->
+<!--              </div>-->
+<!--              <div class="col-md-3 col-lg-3 col-xl-3">-->
+<!--                &lt;!&ndash;                <p class="lead fw-normal mb-2">{{item.title}}</p>&ndash;&gt;-->
+<!--                <p class="lead fw-normal mb-2">Kai’s Golden Dragon</p>-->
+<!--              </div>-->
+<!--              <div class="col-md-3 col-lg-3 col-xl-2 d-flex">-->
+<!--                <button class="btn btn-link px-2">-->
+<!--                  <i class="fas fa-minus"></i>-->
+<!--                </button>-->
 
-                <!--                <button class="btn btn-link px-2" (click)="increase(i, item.quantity)">-->
-                <!--                  <i class="fas fa-plus"></i>-->
-                <!--                </button>-->
-              </div>
-              <div class="col-md-2 col-lg-2 col-xl-2 offset-lg-1">
-                <!--                <h5 class="mb-0">{{item.price}}</h5>-->
-                <h5 class="mb-0">2.600.000</h5>
-              </div>
-              <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
+<!--                <input style="width: 60px; margin-top: 5px" id="form3" min="0" name="quantity" type="number"-->
+<!--                       class="form-control form-control-sm"/>-->
+
+<!--                <button class="btn btn-link px-2">-->
+<!--                  <i class="fas fa-plus"></i>-->
+<!--                </button>-->
+<!--                &lt;!&ndash;                <button class="btn btn-link px-2" (click)="decrease(i, item.quantity)">&ndash;&gt;-->
+<!--                &lt;!&ndash;                  <i class="fas fa-minus"></i>&ndash;&gt;-->
+<!--                &lt;!&ndash;                </button>&ndash;&gt;-->
+
+<!--                &lt;!&ndash;                <input style="width: 60px" id="form1" min="0" name="quantity" [value]="item.quantity" type="number"&ndash;&gt;-->
+<!--                &lt;!&ndash;                       class="form-control form-control-sm"/>&ndash;&gt;-->
+
+<!--                &lt;!&ndash;                <button class="btn btn-link px-2" (click)="increase(i, item.quantity)">&ndash;&gt;-->
+<!--                &lt;!&ndash;                  <i class="fas fa-plus"></i>&ndash;&gt;-->
+<!--                &lt;!&ndash;                </button>&ndash;&gt;-->
+<!--              </div>-->
+<!--              <div class="col-md-2 col-lg-2 col-xl-2 offset-lg-1">-->
+<!--                &lt;!&ndash;                <h5 class="mb-0">{{item.price}}</h5>&ndash;&gt;-->
+<!--                <h5 class="mb-0">2.600.000</h5>-->
+<!--              </div>-->
+<!--              <div class="col-md-1 col-lg-1 col-xl-1 text-end">-->
+<!--                <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
 
       </div>
 

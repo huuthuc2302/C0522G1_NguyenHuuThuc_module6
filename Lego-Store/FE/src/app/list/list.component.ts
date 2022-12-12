@@ -6,6 +6,7 @@ import {CategoryService} from '../service/category.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {CartService} from '../service/cart.service';
 import {DataService} from '../service/data.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-list',
@@ -125,11 +126,10 @@ export class ListComponent implements OnInit {
     } else {
       const cartItem: any = {
         id: lego.id,
-        title: lego.title,
+        name: lego.name,
         price: lego.price,
-        size: lego.size,
         quantity: 1,
-        imageUrl: lego.imageUrl
+        imageBox: lego.imageBox
       };
       this.cart.push(cartItem);
     }
@@ -137,7 +137,7 @@ export class ListComponent implements OnInit {
     this.dataService.changeData({
       quantity: this.cartService.getTotalQuantity()
     });
-    // Swal.fire('Thông Báo !!', 'Đã thêm vào giỏ hàng', 'success').then();
+    Swal.fire('Thông Báo !!', 'Đã thêm vào giỏ hàng', 'success').then();
   }
 
 }
