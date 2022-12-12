@@ -1,20 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {ListComponent} from './list/list.component';
+import {CartComponent} from './cart/cart.component';
 
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   loadChildren: () => import('./book/book.module').then(module => module.BookModule),
-  // },
-  // {
-  //   path: 'security',
-  //   loadChildren: () => import('./security/security.module').then(module => module.SecurityModule),
-  // },
-  // {
-  //   path: 'cart',
-  //   loadChildren: () => import('./invoice/invoice.module').then(module => module.InvoiceModule),
-  // }
+  {path: '', component: ListComponent},
+  {path: 'cart', component: CartComponent}
 ];
 
 @NgModule({

@@ -8,6 +8,7 @@ import { ListComponent } from './list/list.component';
 import { CartComponent } from './cart/cart.component';
 import {RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
+import {AppRoutingModule} from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import {HttpClientModule} from '@angular/common/http';
     CartComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     RouterModule,
     HttpClientModule
