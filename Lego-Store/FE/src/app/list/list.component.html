@@ -1,0 +1,85 @@
+<div class="our_room">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="titlepage">
+          <h2 style="margin-bottom: 40px; margin-top: -20px">Danh sách mặt hàng</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3 col-sm-6" *ngFor="let item of legoList">
+        <div class="room">
+          <div class="room_img">
+            <figure><img style="width: 100%; height: 100%" [src]="item.imageBox"/></figure>
+          </div>
+          <div class="bed_room">
+            <h6>{{item.name}}</h6>
+          </div>
+          <div>
+            <h6 style="color: red; margin-top: -20px; margin-bottom: 20px">{{item.price| currency: "VND" : ""}} VNĐ</h6>
+          </div>
+          <div class="pt-0" style="text-align: center">
+            <a>
+              <button type="button" class="btn btn-outline-success mx-4"
+                      data-mdb-ripple-color="dark" (click)="detail(item)"
+                      data-toggle="modal" data-target="#detail"
+                      title="Chi tiết"><i class="far fa-eye"></i></button>
+            </a>
+            <a>
+              <button type="button" class="btn btn-outline-success mx-4"
+                      data-mdb-ripple-color="dark" (click)="onAddToCart(item)">
+                <i class="fas fa-cart-plus"></i>
+              </button>
+            </a>
+          </div>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--modal detail-->
+<div class="modal fade" id="detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-header center-box border-0">
+        <h3 class="modal-title">Chi tiết sản phẩm</h3>
+        <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="container room_img" style="display: flex; justify-content: center" *ngIf="legoDetail != null">
+        <figure><img style="width: 100%; height: 100%;" [src]="legoDetail.imageUrl"/></figure>
+      </div>
+      <div class="row modal-body border-0" style="margin-top: -30px">
+        <div class="col-md-4">
+          <p>Tên sản phẩm</p>
+          <p>Số mảnh</p>
+          <p>Giá</p>
+          <p>Năm sản xuất</p>
+          <p>Chủ đề</p>
+          <p>Số lượng</p>
+        </div>
+        <div class="col-md-8" *ngIf="legoDetail != null">
+          <p style="font-weight: bold">{{legoDetail.name}}</p>
+          <p style="font-weight: bold">{{legoDetail.numberOfPieces}} pcs</p>
+          <p style="color: red">{{legoDetail.price| currency: "VND" : ""}} VNĐ</p>
+          <p style="font-weight: bold">{{legoDetail.releaseYear}}</p>
+          <p style="font-weight: bold">{{legoDetail.category.name}}</p>
+          <p style="font-weight: bold">{{legoDetail.quantity}}</p>
+        </div>
+      </div>
+      <div class="product-page-cart">
+        <button type="button" class="btn btn-outline-success mx-4"
+                data-mdb-ripple-color="dark">
+          <i class="fas fa-cart-plus"></i>
+        </button>
+      </div>
+      <div class="modal-footer border-0">
+<!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>-->
+      </div>
+    </div>
+  </div>
+</div>
+
