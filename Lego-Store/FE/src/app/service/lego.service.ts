@@ -8,7 +8,7 @@ import {Lego} from '../model/lego';
 })
 export class LegoService {
 
-  API_URL = 'http://localhost:8080/';
+  API_URL = 'http://localhost:8080/api/public/';
 
   constructor(private  http: HttpClient) {
   }
